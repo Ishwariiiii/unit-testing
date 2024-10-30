@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test("on change event testing", () => {
+render(<App/>)
+let inputCheck = screen.getByRole("textbox");
+fireEvent.change(inputCheck, {target: {value:'abc'}});
+expect(inputCheck.value).toBe("abc123");
+})
